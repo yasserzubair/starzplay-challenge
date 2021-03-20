@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Index = () => {
-  return (
-    <h1>TV Shows Page</h1>
-  )
-}
+  return <h1 className='text-white'>TV Shows Page</h1>;
+};
 
-export default Index
+export default Index;

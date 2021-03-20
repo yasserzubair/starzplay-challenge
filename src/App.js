@@ -46,6 +46,6 @@ const App = () => {
       </div>
     </DeviceContext.Provider>
   );
-}
+};
 
 export default App;

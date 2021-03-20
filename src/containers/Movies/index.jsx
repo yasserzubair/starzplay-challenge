@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Movies = () => {
-  return (
-    <h1>Movies Page</h1>
-  )
-}
+  return <h1 className='text-white'>Movies Page</h1>;
+};
 
-export default Movies
+export default Movies;

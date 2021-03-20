@@ -5,6 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { DeviceContext } from "../../utils/deviceContext";
 import lazyResolver from "../../utils/lazyResolver";
 import { SuspenseWithFallback } from "../../utils/common";
+import { WithErrorBoundary } from "../../hoc/withErrorBoundary";
 
 const PhoneBurgerButton = lazyResolver(
   () => import("./phoneHeaderUtils"),
@@ -106,7 +107,7 @@ const Header = () => {
       </SuspenseWithFallback>
     </nav>
   );
-}
+};
 
 const CustomNavItem = ({ item }) => (
   <a
@@ -117,4 +118,4 @@ const CustomNavItem = ({ item }) => (
   </a>
 );
 
-export default Header;
+export default WithErrorBoundary(Header);

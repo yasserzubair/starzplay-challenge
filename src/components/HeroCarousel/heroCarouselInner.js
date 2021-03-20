@@ -1,13 +1,12 @@
 import React from "react";
-import OwlCarousel from "react-owl-carousel";
 import styled, { css } from "styled-components";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import { owlSettings } from "../../utils/common";
 import { DeviceContext } from "../../utils/deviceContext";
-import { SuspenseWithFallback } from "../../utils/common";
-// const HeroTile = React.lazy(() => import("./heroTile"));
 import HeroTile from "./heroTile";
+const OwlCarousel = React.lazy(() => import("react-owl-carousel"));
+
 
 const CarouselParent = styled.div`
   ${(props) =>
@@ -16,6 +15,7 @@ const CarouselParent = styled.div`
       transform: scale(1.5);
       transform-origin: 50% 0%;
     `}
+  margin-bottom: 9%;
   & button {
     border: none;
     outline: none;
@@ -52,11 +52,9 @@ const HeroCarouselInner = (props) => {
   return (
     <CarouselParent device={device}>
       <OwlCarousel {...owlSettings(device)}>
-        <SuspenseWithFallback>
-          {props.heroTitles[0].layoutTitles.titles.map((item, index) => (
-              <HeroTile item={item} key={`hero-${Math.random}-${index}`} />
-          ))}
-        </SuspenseWithFallback>
+        {props?.heroTitles[0]?.layoutTitles.titles.map((item, index) => (
+          <HeroTile item={item} key={`hero-${Math.random}-${index}`} />
+        ))}
       </OwlCarousel>
     </CarouselParent>
   );

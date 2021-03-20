@@ -34,3 +34,18 @@ hero.forEach(doc => {
 return heroTitles
 }
 
+export const getCategroy = async (layoutOrder) => {
+
+  const db = firebase.firestore();
+  
+  const titlesRef = db.collection('titles');
+  
+  const category = await titlesRef.where('layoutOrder', '==', `${layoutOrder}`).get();
+  let categoryTitles = [];
+  category.forEach(doc => {
+    categoryTitles.push(doc.data());
+  });
+  return categoryTitles
+  }
+  
+
