@@ -7,7 +7,6 @@ import { DeviceContext } from "../../utils/deviceContext";
 import HeroTile from "./heroTile";
 const OwlCarousel = React.lazy(() => import("react-owl-carousel"));
 
-
 const CarouselParent = styled.div`
   ${(props) =>
     props.device === "desktop" &&
@@ -53,7 +52,11 @@ const HeroCarouselInner = (props) => {
     <CarouselParent device={device}>
       <OwlCarousel {...owlSettings(device)}>
         {props?.heroTitles[0]?.layoutTitles.titles.map((item, index) => (
-          <HeroTile item={item} key={`hero-${Math.random}-${index}`} />
+          <HeroTile
+            device={device}
+            item={item}
+            key={`hero-${Math.random}-${index}`}
+          />
         ))}
       </OwlCarousel>
     </CarouselParent>

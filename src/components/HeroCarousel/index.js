@@ -1,8 +1,10 @@
 import React from "react";
 import { getHero } from "../../utils/firebase";
-import HeroCarouselInner from "./heroCarouselInner";
 import { Fallback } from "../../utils/common";
 import { WithErrorBoundary } from "../../hoc/withErrorBoundary";
+import { SuspenseWithFallback } from "../../utils/common";
+const HeroCarouselInner = React.lazy(() => import("./heroCarouselInner"));
+
 const HeroCarousel = (props) => {
   const [heroTitles, setHeroTitles] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -15,7 +17,9 @@ const HeroCarousel = (props) => {
   return (
     <>
       {!loading && heroTitles.length && (
-        <HeroCarouselInner heroTitles={heroTitles} />
+        <SuspenseWithFallback>
+          <HeroCarouselInner heroTitles={heroTitles} />
+        </SuspenseWithFallback>
       )}
       {loading && <Fallback />}
     </>

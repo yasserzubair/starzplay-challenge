@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .h-211 {
+    height: 211px;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -6,6 +6,7 @@ import { DeviceContext } from "../../utils/deviceContext";
 import lazyResolver from "../../utils/lazyResolver";
 import { SuspenseWithFallback } from "../../utils/common";
 import { WithErrorBoundary } from "../../hoc/withErrorBoundary";
+import { Link, NavLink } from 'react-router-dom'
 
 const PhoneBurgerButton = lazyResolver(
   () => import("./phoneHeaderUtils"),
@@ -55,7 +56,9 @@ const Header = () => {
           </SuspenseWithFallback>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
+              <Link to="/">
               <img className="block h-5 w-auto" src={logo} alt="starzplay" />
+              </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
@@ -70,7 +73,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden md:flex">
+          <div className="absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden md:flex">
             <button className="bg-halo p-2 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
               <span className="sr-only">View notifications</span>
               <div className="h-6 w-6">
@@ -110,12 +113,12 @@ const Header = () => {
 };
 
 const CustomNavItem = ({ item }) => (
-  <a
-    href={`/${item}`}
+  <NavLink
+    to={`/${item}`}
     className="text-nb-gray uppercase text-sm hover:text-white font-light"
   >
     {item}
-  </a>
+  </NavLink>
 );
 
 export default WithErrorBoundary(Header);

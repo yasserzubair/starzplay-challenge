@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
-import Header from "./components/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { DeviceContext } from "./utils/deviceContext";
 import { SuspenseWithFallback } from "./utils/common";
 
 const Movies = React.lazy(() => import("./containers/Movies"));
+const Header = React.lazy(() => import("./components/Header"));
 const TVShows = React.lazy(() => import("./containers/TVShows"));
 const Home = React.lazy(() => import("./containers/Home"));
 import("./utils/firebase").then((firebaseUtil) => {
@@ -25,10 +25,10 @@ const App = () => {
       }}
     >
       <div className="App">
-        <Header />
-        <div style={{ paddingTop: device === "mobile" ? "80px" : "65px" }}>
-          <Router>
-            <SuspenseWithFallback>
+        <Router>
+          <SuspenseWithFallback>
+            <Header />
+            <div style={{ paddingTop: device === "mobile" ? "80px" : "65px" }}>
               <Switch>
                 <Route exact path="/">
                   <Home />
@@ -36,13 +36,13 @@ const App = () => {
                 <Route exact path="/movies">
                   <Movies />
                 </Route>
-                <Route exact path="/tv-shows">
+                <Route exact path="/tv shows">
                   <TVShows />
                 </Route>
               </Switch>
-            </SuspenseWithFallback>
-          </Router>
-        </div>
+            </div>
+          </SuspenseWithFallback>
+        </Router>
       </div>
     </DeviceContext.Provider>
   );

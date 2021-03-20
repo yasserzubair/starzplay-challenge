@@ -16,13 +16,13 @@ const CategroyCarousel = ({ moduleId }) => {
     <>
       {!loading && categroyTitles.length && (
         <>
-          <h2 className="text-white text-left mt-4 font-bold mb-2 pl-2">
+          <h2 className="text-white text-lg text-left mt-4 font-bold mb-2 pl-2">
             {categroyTitles[0].title}
           </h2>
           <CategoryCarouselInner categoryTitles={categroyTitles} />
         </>
       )}
-      {loading && <Fallback />}
+      {loading && <div className='h-211 pt-10'><Fallback /></div>}
     </>
   );
 };

@@ -7,6 +7,7 @@ import { DeviceContext } from "../../utils/deviceContext";
 import CategoryTile from "./categoryTile";
 const OwlCarousel = React.lazy(() => import("react-owl-carousel"));
 
+
 const CarouselParent = styled.div`
   & button {
     border: none;
