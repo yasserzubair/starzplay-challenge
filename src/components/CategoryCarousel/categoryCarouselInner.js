@@ -77,7 +77,7 @@ const CategoryCarouselInner = (props) => {
     return () => {
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [itemsToShow]);
   return (
     <CarouselParent device={device}>
       <OwlCarousel {...owlCategorySettings(device, itemsToShow)}>
